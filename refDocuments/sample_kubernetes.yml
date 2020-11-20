@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    app.quarkus.io/vcs-url: https://github.com/mosesalphonse/Kubernetes-Horizontal-Pod-Autoscaler-Demo.git
+    app.quarkus.io/build-timestamp: 2020-11-20 - 09:51:01 +0000
+    app.quarkus.io/commit-id: cbec023ceb8dd985988c5f91bd6d64c9fa31de09
+  labels:
+    app.kubernetes.io/name: sash-quarkus-async
+    app.kubernetes.io/version: "1"
+  name: sash-quarkus-async
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: sash-quarkus-async
+      app.kubernetes.io/version: "1"
+  template:
+    metadata:
+      annotations:
+        app.quarkus.io/vcs-url: https://github.com/mosesalphonse/Kubernetes-Horizontal-Pod-Autoscaler-Demo.git
+        app.quarkus.io/build-timestamp: 2020-11-20 - 09:51:01 +0000
+        app.quarkus.io/commit-id: cbec023ceb8dd985988c5f91bd6d64c9fa31de09
+      labels:
+        app.kubernetes.io/name: sash-quarkus-async
+        app.kubernetes.io/version: "1"
+    spec:
+      containers:
+      - env:
+        - name: KUBERNETES_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        image: gcr.io/moses-286120/sash-quarkus-async:1
+        imagePullPolicy: Always
+        name: sash-quarkus-async
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m
