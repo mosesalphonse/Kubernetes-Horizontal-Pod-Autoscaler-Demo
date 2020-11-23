@@ -1,6 +1,8 @@
 ## Kubernetes-Horizontal-Pod-Autoscaler-Demo
 
-This demo code can be referred to autosclae pods based on the CPU load
+This demo code can be referred to autosclae pods based on the CPU load.
+
+This demo can be verified within Kubernetes Cluster setup
 
 ## Concepts:
 
